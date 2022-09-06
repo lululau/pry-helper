@@ -105,6 +105,12 @@ module PryHelper
       @@models = []
 
       ActiveRecord::Base.connection.tap do |conn|
+        Rails.root.join("app/models").tap do |path|
+          Dir.glob("#{path}/**/*.rb").each do |file|
+            file_name = File.basename(file, '.rb')
+            file_name.classify.constantize
+          end
+        end
         defined_models = ::ApplicationRecord.descendants
         tables = conn.tables
         if conn.adapter_name == 'Mysql2'
@@ -124,7 +130,7 @@ module PryHelper
         tables.each do |table_name|
           table_comment = comments[table_name]
           primary_keys[table_name].tap do |pkey|
-            table_name.camelize.tap do |const_name|
+            table_name.classify.camelize.tap do |const_name|
               const_name = 'Modul' if const_name == 'Module'
               const_name = 'Clazz' if const_name == 'Class'
               if model_class = defined_models.find { |m| m.table_name == table_name }
