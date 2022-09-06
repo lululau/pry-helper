@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    pry-helper (0.1.0)
+    pry-helper (0.1.1)
       activerecord
       activesupport
       caxlsx
@@ -36,10 +36,8 @@ GEM
       concurrent-ruby (~> 1.0)
     marcel (1.0.2)
     method_source (1.0.0)
-    mini_portile2 (2.8.0)
     minitest (5.16.3)
-    nokogiri (1.13.8)
-      mini_portile2 (~> 2.8.0)
+    nokogiri (1.13.8-x86_64-darwin)
       racc (~> 1.4)
     pry (0.14.1)
       coderay (~> 1.1)
