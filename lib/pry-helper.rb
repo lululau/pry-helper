@@ -1,4 +1,4 @@
-if Rails.const_defined? 'Console'
+if defined? Rails && Rails.const_defined? 'Console'
   Pry.hooks.add_hook(:when_started, :pry_helper) do |output, binding, pry|
     require 'terminal-table'
     require 'table_print'
